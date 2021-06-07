@@ -1,0 +1,52 @@
+<mxfile>
+    <diagram id="FsqYUJv2-tZrkKB8whaJ" name="ページ1">
+        <mxGraphModel dx="717" dy="627" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="827" pageHeight="1169" math="0" shadow="0">
+            <root>
+                <mxCell id="0"/>
+                <mxCell id="1" parent="0"/>
+                <mxCell id="13" value="&amp;nbsp; &amp;nbsp; 購入者　buyer" style="rounded=1;arcSize=10;whiteSpace=wrap;html=1;align=left;fillColor=none;strokeWidth=2;verticalAlign=top;dashed=1;" parent="1" vertex="1">
+                    <mxGeometry x="370" y="310" width="290" height="320" as="geometry"/>
+                </mxCell>
+                <mxCell id="6" value="ユーザー　user" style="swimlane;childLayout=stackLayout;horizontal=1;startSize=30;horizontalStack=0;rounded=1;fontSize=14;fontStyle=0;strokeWidth=2;resizeParent=0;resizeLast=1;shadow=0;dashed=0;align=center;" parent="1" vertex="1">
+                    <mxGeometry x="40" y="40" width="240" height="200" as="geometry"/>
+                </mxCell>
+                <mxCell id="7" value="ニックネーム　nickname&#10;メールアドレス　email&#10;パスワード　password&#10;名前　first_name&#10;苗字　last_name&#10;名前カナ　first_name_kana&#10;苗字カナ　last_name_kana&#10;生年月日　dirth_date" style="align=left;strokeColor=none;fillColor=none;spacingLeft=4;fontSize=12;verticalAlign=top;resizable=0;rotatable=0;part=1;" parent="6" vertex="1">
+                    <mxGeometry y="30" width="240" height="170" as="geometry"/>
+                </mxCell>
+                <mxCell id="8" value="商品　item" style="swimlane;childLayout=stackLayout;horizontal=1;startSize=30;horizontalStack=0;rounded=1;fontSize=14;fontStyle=0;strokeWidth=2;resizeParent=0;resizeLast=1;shadow=0;dashed=0;align=center;" parent="1" vertex="1">
+                    <mxGeometry x="400" y="40" width="240" height="200" as="geometry"/>
+                </mxCell>
+                <mxCell id="9" value="商品名　name&#10;価格　price&#10;画像　image&#10;商品説明　info&#10;カテゴリー　category&#10;商品状態　salse_status&#10;配送手数料　shopping_fee_status&#10;配送元　prefecture&#10;配送日　scheduled_derivery&#10;出品者　user_id (FK)&#10;" style="align=left;strokeColor=none;fillColor=none;spacingLeft=4;fontSize=12;verticalAlign=top;resizable=0;rotatable=0;part=1;" parent="8" vertex="1">
+                    <mxGeometry y="30" width="240" height="170" as="geometry"/>
+                </mxCell>
+                <mxCell id="10" value="" style="endArrow=ERoneToMany;html=1;rounded=0;entryX=0;entryY=0.5;entryDx=0;entryDy=0;exitX=1;exitY=0.5;exitDx=0;exitDy=0;startArrow=ERone;startFill=0;endFill=0;endSize=20;startSize=20;strokeWidth=2;" parent="1" source="7" target="9" edge="1">
+                    <mxGeometry relative="1" as="geometry">
+                        <mxPoint x="290" y="190" as="sourcePoint"/>
+                        <mxPoint x="380" y="190" as="targetPoint"/>
+                        <Array as="points"/>
+                    </mxGeometry>
+                </mxCell>
+                <mxCell id="11" value="カード情報　card" style="swimlane;childLayout=stackLayout;horizontal=1;startSize=30;horizontalStack=0;rounded=1;fontSize=14;fontStyle=0;strokeWidth=2;resizeParent=0;resizeLast=1;shadow=0;dashed=0;align=center;" parent="1" vertex="1">
+                    <mxGeometry x="400" y="510" width="240" height="100" as="geometry"/>
+                </mxCell>
+                <mxCell id="12" value="カード番号　number&#10;有効期限　exe_year_month&#10;セキュリティコード　cvc&#10;※　PAY.JPを使用するのでテーブル不要" style="align=left;strokeColor=none;fillColor=none;spacingLeft=4;fontSize=12;verticalAlign=top;resizable=0;rotatable=0;part=1;" parent="11" vertex="1">
+                    <mxGeometry y="30" width="240" height="70" as="geometry"/>
+                </mxCell>
+                <mxCell id="14" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;exitX=0.5;exitY=1;exitDx=0;exitDy=0;startArrow=ERone;startFill=0;startSize=20;endArrow=ERone;endFill=0;endSize=20;strokeWidth=2;entryX=0.5;entryY=0;entryDx=0;entryDy=0;" parent="1" source="9" target="15" edge="1">
+                    <mxGeometry relative="1" as="geometry">
+                        <mxPoint x="520" y="310" as="targetPoint"/>
+                    </mxGeometry>
+                </mxCell>
+                <mxCell id="15" value="配送先　shopping_address" style="swimlane;childLayout=stackLayout;horizontal=1;startSize=30;horizontalStack=0;rounded=1;fontSize=14;fontStyle=0;strokeWidth=2;resizeParent=0;resizeLast=1;shadow=0;dashed=0;align=center;fillColor=none;" parent="1" vertex="1">
+                    <mxGeometry x="400" y="340" width="240" height="160" as="geometry"/>
+                </mxCell>
+                <mxCell id="16" value="郵便番号　postal_code&#10;都道府県　prefecture&#10;市区町村　city&#10;番地　addresses&#10;建物名　building&#10;電話番号　phone_number&#10;購入商品　item_id  (FK)&#10;購入者　user_id (FK)" style="align=left;strokeColor=none;fillColor=none;spacingLeft=4;fontSize=12;verticalAlign=top;resizable=0;rotatable=0;part=1;" parent="15" vertex="1">
+                    <mxGeometry y="30" width="240" height="130" as="geometry"/>
+                </mxCell>
+                <mxCell id="17" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;exitX=1;exitY=0.75;exitDx=0;exitDy=0;entryX=0;entryY=0.592;entryDx=0;entryDy=0;entryPerimeter=0;endArrow=ERoneToMany;endFill=0;startArrow=ERone;startFill=0;strokeWidth=2;endSize=20;startSize=20;" edge="1" parent="1" source="7" target="16">
+                    <mxGeometry relative="1" as="geometry"/>
+                </mxCell>
+            </root>
+        </mxGraphModel>
+    </diagram>
+</mxfile>
