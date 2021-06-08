@@ -4,21 +4,21 @@
 
 ## users テーブル
 
-| Column          | Type       | Options           |
-| --------------- | ---------- | ----------------- |
-| email           | string     | null: false       |
-| password        | string     | null: false       |
-| nickname        | string     | null: false       |
-| first_name      | string     | null: false       |
-| last_name       | string     | null: false       |
-| first_name_kana | string     | null: false       |
-| last_name_kana  | string     | null: false       |
-| birth_date      | date       | null: false       |
+| Column             | Type       | Options                  |
+| ------------------ | ---------- | ------------------------ |
+| email              | string     | null: false  unique:true |
+| encrypted_password | string     | null: false              |
+| nickname           | string     | null: false              |
+| first_name         | string     | null: false              |
+| last_name          | string     | null: false              |
+| first_name_kana    | string     | null: false              |
+| last_name_kana     | string     | null: false              |
+| birth_date         | date       | null: false              |
 
 ### Association
 
 - has_many :items
-- has_many :shopping_addresses
+- has_many :buys
 
 ## items テーブル
 
@@ -26,19 +26,31 @@
 | --------------------- | ------------- | ----------------- |
 | name                  | string        | null: false       |
 | price                 | integer       | null: false       |
-| image                 | ActiveStorage | null: false       |
 | info                  | text          | null: false       |
 | category_id           | integer       | null: false       |
 | sales_status_id       | integer       | null: false       |
 | fee_status_id         | integer       | null: false       |
 | prefecture_id         | integer       | null: false       |
 | scheduled_delivery_id | integer       | null: false       |
-| user                  | references    |                   |
+| user                  | references    | foreign_key: true |
 
 ### Association
 
 - belongs_to :user
-- has_one :shopping_address
+- has_one :buys
+
+## buys テーブル
+
+| Column                | Type          | Options           |
+| --------------------- | ------------- | ----------------- |
+| item                  | references    | foreign_key: true |
+| user                  | references    | foreign_key: true |
+
+### Association
+
+- belongs_to :user
+- belongs_to :item
+- has_one :shopping_addresses
 
 ## shopping_addresses テーブル
 
@@ -50,9 +62,8 @@
 | addresses             | string        | null: false       |
 | building              | string        |                   |
 | phone_number          | string        | null: false       |
-| item                  | references    |                   |
+| buy                   | references    | foreign_key: true |
 
 ### Association
 
-- belongs_to :item
-- belongs_to :user
+- belongs_to :buy
