@@ -37,7 +37,7 @@
 ### Association
 
 - belongs_to :user
-- has_one :buys
+- has_one :buy
 
 ## buys テーブル
 
@@ -50,7 +50,7 @@
 
 - belongs_to :user
 - belongs_to :item
-- has_one :shopping_addresses
+- has_one :shopping_address
 
 ## shopping_addresses テーブル
 
@@ -59,7 +59,7 @@
 | postal_code           | string        | null: false                    |
 | prefecture_id         | integer       | null: false                    |
 | city                  | string        | null: false                    |
-| addresses             | string        | null: false                    |
+| address               | string        | null: false                    |
 | building              | string        |                                |
 | phone_number          | string        | null: false                    |
 | buy                   | references    | foreign_key: true, null: false |
