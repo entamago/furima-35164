@@ -12,6 +12,8 @@ class Item < ApplicationRecord
     end
   end
 
+  has_one_attached :image
+
   extend ActiveHash::Associations::ActiveRecordExtensions
   belongs_to :category
   belongs_to :fee_status
