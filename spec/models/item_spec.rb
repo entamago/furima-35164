@@ -62,7 +62,7 @@ RSpec.describe Item, type: :model do
         @item.valid?
         expect(@item.errors.full_messages).to include("Prefecture must be other than 0")
       end
-      it 'scheduled_delivery_idが空では登録できないこと' do
+      it '発送日時の目安が未選択（id = 0）では登録できないこと' do
         @item.scheduled_delivery_id = 0
         @item.valid?
         expect(@item.errors.full_messages).to include("Scheduled delivery must be other than 0")
