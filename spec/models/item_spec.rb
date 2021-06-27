@@ -42,6 +42,12 @@ RSpec.describe Item, type: :model do
         @item.valid?
         expect(@item.errors.full_messages).to include('Price 半角数字を入力してください')
       end
+      it '販売価格は全て半角でも英数混合だと登録できない' do
+        @item.price = '1000en'
+        @item.valid?
+        binding.pry
+        expect(@item.errors.full_messages).to include('Price 半角数字を入力してください')
+      end
       it '商品説明が空では登録できないこと' do
         @item.info = nil
         @item.valid?
