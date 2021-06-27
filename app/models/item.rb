@@ -1,7 +1,7 @@
 class Item < ApplicationRecord
   with_options presence: true do
     validates :name
-    validates :price, inclusion: { in: 300..9_999_999 }
+    validates :price, numericality: { only_integer: true, message: '半角数字を入力してください' }, inclusion: { in: 300..9_999_999 }
     validates :info
     with_options numericality: { other_than: 0 } do
       validates :category_id
