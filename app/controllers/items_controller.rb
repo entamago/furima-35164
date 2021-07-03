@@ -19,16 +19,17 @@ class ItemsController < ApplicationController
   end
 
   def show
-    @item = Item.find(params[:id])
+    set_item
   end
 
   def edit
-    @item = Item.find(params[:id])
-    redirect_to root_path unless user_signed_in? && current_user.id == @item.user_id
+    set_item
+    check_user
   end
 
   def update
-    @item = Item.find(params[:id])
+    set_item
+    check_user
     if @item.update(item_params)
       redirect_to item_path(@item.id)
     else
@@ -45,6 +46,14 @@ class ItemsController < ApplicationController
   end
 
   private
+
+  def set_item
+    @item = Item.find(params[:id])
+  end
+
+  def check_user
+    redirect_to root_path unless user_signed_in? && current_user.id == @item.user_id
+  end
 
   def item_params
     params.require(:item).permit(
