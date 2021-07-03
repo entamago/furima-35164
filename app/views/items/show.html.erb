@@ -29,7 +29,7 @@
     <%# 商品購入機能の実装後に「ログインしている」「出品者である」に「購入されていない」の条件を追加予定 %>
     <% if user_signed_in? %>
       <% if current_user.id == @item.user_id %>
-        <%= link_to "商品の編集", "#", method: :get, class: "item-red-btn" %>
+        <%= link_to "商品の編集", edit_item_path, method: :get, class: "item-red-btn" %>
         <p class="or-text">or</p>
         <%= link_to "削除", item_path, method: :delete, class:"item-destroy" %>
       <% else %>
