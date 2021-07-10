@@ -16,6 +16,7 @@ class Item < ApplicationRecord
   validate :image_presence
 
   belongs_to :user
+  has_one :buy
 
   extend ActiveHash::Associations::ActiveRecordExtensions
   belongs_to :category
