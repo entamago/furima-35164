@@ -1,11 +1,14 @@
 class BuysController < ApplicationController
+  before_action :authenticate_user!, except: [:index, :create]
+  before_action :set_item, only:[:index, :create]
+  before_action :check_buyer, only: [:index, :create]
+  before_action :check_sold_out, only: [:index, :create]
+
   def index
-    @item = Item.find(params[:item_id])
     @buy_address = BuyAddress.new
   end
 
   def create
-    @item = Item.find(params[:item_id])
     @buy_address = BuyAddress.new(buy_params)
     if @buy_address.valid?
       pay_item
@@ -26,9 +29,21 @@ class BuysController < ApplicationController
   def pay_item
     Payjp.api_key = ENV["PAYJP_SECRET_KEY"]
     Payjp::Charge.create(
-      amount: @item.price, # 商品の値段
-      card: buy_params[:token], # カードトークン
-      currency: 'jpy' # 通貨の種類（日本円）
+      amount: @item.price,
+      card: buy_params[:token],
+      currency: 'jpy'
     )
+  end
+
+  def set_item
+    @item = Item.find(params[:item_id])
+  end
+
+  def check_buyer
+    redirect_to root_path if current_user.id == @item.user_id
+  end
+
+  def check_sold_out
+    redirect_to root_path unless @item.buy.blank?
   end
 end

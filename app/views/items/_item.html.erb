@@ -3,14 +3,11 @@
         <div class='item-img-content'>
           <%= image_tag item.image, class: "item-img" %>
 
-          <%# 商品が売れていればsold outを表示しましょう %>
-          <%# 購入機能実装後に下記のif文の条件式を変更する %>
-          <% if item.nil? %>
+          <% unless item.buy.blank? %>
             <div class='sold-out'>
               <span>Sold Out!!</span>
             </div>
           <% end %>
-          <%# //商品が売れていればsold outを表示しましょう %>
 
         </div>
         <div class='item-info'>
