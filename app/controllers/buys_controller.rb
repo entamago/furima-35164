@@ -1,6 +1,6 @@
 class BuysController < ApplicationController
   before_action :authenticate_user!
-  before_action :set_item, only:[:index, :create]
+  before_action :set_item, only: [:index, :create]
   before_action :check_buyer, only: [:index, :create]
   before_action :check_sold_out, only: [:index, :create]
 
@@ -20,6 +20,7 @@ class BuysController < ApplicationController
   end
 
   private
+
   def buy_params
     params.require(:buy_address).permit(
       :postal_code, :prefecture_id, :city, :address, :building, :phone_number
@@ -27,7 +28,7 @@ class BuysController < ApplicationController
   end
 
   def pay_item
-    Payjp.api_key = ENV["PAYJP_SECRET_KEY"]
+    Payjp.api_key = ENV['PAYJP_SECRET_KEY']
     Payjp::Charge.create(
       amount: @item.price,
       card: buy_params[:token],

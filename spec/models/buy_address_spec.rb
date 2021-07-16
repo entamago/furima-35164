@@ -28,12 +28,12 @@ RSpec.describe BuyAddress, type: :model do
       it 'postal_codeが半角のハイフンを含んだ正しい形式でないと保存できないこと' do
         @buy_address.postal_code = '1234567'
         @buy_address.valid?
-        expect(@buy_address.errors.full_messages).to include("Postal code ハイフンを含む郵便番号を入力してください")
+        expect(@buy_address.errors.full_messages).to include('Postal code ハイフンを含む郵便番号を入力してください')
       end
       it 'prefecture_idを選択していないと保存できないこと' do
         @buy_address.prefecture_id = 0
         @buy_address.valid?
-        expect(@buy_address.errors.full_messages).to include("Prefecture 都道府県を選択してください")
+        expect(@buy_address.errors.full_messages).to include('Prefecture 都道府県を選択してください')
       end
       it 'cityが空だと保存できないこと' do
         @buy_address.city = ''
@@ -53,7 +53,7 @@ RSpec.describe BuyAddress, type: :model do
       it 'phone_numberが11桁以下の数字でないと保存できないこと' do
         @buy_address.phone_number = '0901234567890'
         @buy_address.valid?
-        expect(@buy_address.errors.full_messages).to include("Phone number 10桁か11桁の数字を入力してください")
+        expect(@buy_address.errors.full_messages).to include('Phone number 10桁か11桁の数字を入力してください')
       end
       it 'tokenが空だと保存できないこと' do
         @buy_address.token = ''
