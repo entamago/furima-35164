@@ -49,7 +49,7 @@ class ItemsController < ApplicationController
   end
 
   def check_user
-    redirect_to root_path unless user_signed_in? && current_user.id == @item.user_id
+    redirect_to root_path unless user_signed_in? && current_user.id == @item.user_id && @item.buy.blank?
   end
 
   def item_params
