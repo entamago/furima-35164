@@ -50,7 +50,7 @@ RSpec.describe BuyAddress, type: :model do
         @buy_address.valid?
         expect(@buy_address.errors.full_messages).to include("Phone number can't be blank")
       end
-      it 'phone_numberが11桁以下の数字でないと保存できないこと' do
+      it 'phone_numberが12桁以上の数字では保存できないこと' do
         @buy_address.phone_number = '0901234567890'
         @buy_address.valid?
         expect(@buy_address.errors.full_messages).to include('Phone number 10桁か11桁の数字を入力してください')
