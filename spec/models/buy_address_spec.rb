@@ -55,6 +55,16 @@ RSpec.describe BuyAddress, type: :model do
         @buy_address.valid?
         expect(@buy_address.errors.full_messages).to include('Phone number 10桁か11桁の数字を入力してください')
       end
+      it 'phone_numberが9桁以下の数字では保存できないこと' do
+        @buy_address.phone_number = '123456789'
+        @buy_address.valid?
+        expect(@buy_address.errors.full_messages).to include('Phone number 10桁か11桁の数字を入力してください')
+      end
+      it 'phone_numberが英数混合では保存できないこと' do
+        @buy_address.phone_number = '123456789abc'
+        @buy_address.valid?
+        expect(@buy_address.errors.full_messages).to include('Phone number 10桁か11桁の数字を入力してください')
+      end
       it 'tokenが空だと保存できないこと' do
         @buy_address.token = ''
         @buy_address.valid?
